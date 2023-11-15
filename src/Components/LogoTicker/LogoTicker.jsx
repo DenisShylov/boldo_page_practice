@@ -10,7 +10,6 @@ const LogoTicker = () => {
         height: '93px',
         alignItems: 'center',
         justifyContent: 'center',
-
         background:
           'linear-gradient(90deg, #0A2640 0%, rgba(10, 38, 64, 0.11) 31.6%, rgba(10, 38, 64, 0.00) 72.89%, #0A2640 97.87%)',
       }}
@@ -22,23 +21,47 @@ const LogoTicker = () => {
               sx={{
                 display: 'flex',
                 alignItems: 'baseline',
-                gap: '10px',
-                mr: '40px',
+                gap: {
+                  xs: 0,
+                  sm: '10px',
+                  md: '10px',
+                  lg: '10px',
+                  xl: '10px',
+                },
+                mr: {
+                  xs: '10px',
+                  sm: '20px',
+                  md: '20px',
+                  lg: '40px',
+                  xl: '40px',
+                },
               }}
             >
               <BoldoLogo />
-              <LogoText variant="h2">Boldo</LogoText>
+              <LogoText variant={'span'}>Boldo</LogoText>
             </Box>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'baseline',
-                gap: '10px',
-                mr: '40px',
+                gap: {
+                  xs: 0,
+                  sm: '10px',
+                  md: '10px',
+                  lg: '10px',
+                  xl: '10px',
+                },
+                mr: {
+                  xs: '10px',
+                  sm: '20px',
+                  md: '20px',
+                  lg: '40px',
+                  xl: '40px',
+                },
               }}
             >
               <PrestoLogo />
-              <LogoText variant="h2">Presto</LogoText>
+              <LogoText variant={'span'}>Presto</LogoText>
             </Box>
           </>
         ))}

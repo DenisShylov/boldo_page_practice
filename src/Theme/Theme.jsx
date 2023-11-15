@@ -1,6 +1,15 @@
 import { createTheme } from '@mui/material';
 
 export const Theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 1024,
+      lg: 1280,
+      xl: 1500,
+    },
+  },
   typography: {
     h1: {
       fontFamily: ['Manrope', 'Open Sans', 'Roboto', 'sans-serif'].join(','),

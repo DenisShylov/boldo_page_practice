@@ -2,7 +2,8 @@ import { Box, styled } from '@mui/material';
 
 export const CardImg = styled('img')(() => ({}));
 
-export const Card = styled(Box)(() => ({
+export const Card = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('sm')]: {},
   width: '493.858px',
   height: ' 231.898px',
   borderRadius: '15.03px',

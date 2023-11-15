@@ -9,7 +9,13 @@ import { itemCard } from '../../Constants/PercentItemCard';
 
 const StatisticCards = () => {
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', width: '494px' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: '494px',
+      }}
+    >
       <Card sx={{ mb: '25px' }}>
         <CardImg
           src={group}
@@ -21,7 +27,6 @@ const StatisticCards = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-
             gap: '19px',
             mt: '35px',
           }}
