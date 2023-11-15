@@ -15,7 +15,7 @@ const LogoTicker = () => {
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        {[1, 2, 3].map(() => (
+        {[1, 2, 3].map((item) => (
           <>
             <Box
               sx={{

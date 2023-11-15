@@ -10,6 +10,7 @@ const Header = () => {
   return (
     <Container>
       <AppBar
+        position="static"
         sx={{
           p: {
             xs: '56px 30px 0 30px',
@@ -55,7 +56,7 @@ const Header = () => {
             }}
           >
             {NavItems.map((item) => (
-              <NavItemBtn>{item}</NavItemBtn>
+              <NavItemBtn key={item}>{item}</NavItemBtn>
             ))}
             <LoginBtn variant="contained">Log In</LoginBtn>
           </Box>

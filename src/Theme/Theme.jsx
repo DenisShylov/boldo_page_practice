@@ -61,11 +61,20 @@ export const Theme = createTheme({
         dark: '#0A2640',
       },
       grey: {
+        lightest: '#777',
         light: '#F1F1F1',
       },
     },
   },
   components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          maxWidth: 300,
+          boxShadow: 'none',
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
@@ -82,6 +91,22 @@ export const Theme = createTheme({
           fontSize: '16px',
           padding: 0,
           borderRadius: '24px',
+        },
+      },
+    },
+    MuiCardMedia: {
+      styleOverrides: {
+        root: {
+          height: '354px',
+          borderRadius: '24px',
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          color: '#0A2640',
+          width: '50%',
         },
       },
     },
