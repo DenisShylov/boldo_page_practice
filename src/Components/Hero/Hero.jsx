@@ -1,6 +1,5 @@
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
-import Header from '../Header/Header';
 import Advantages from '../Advantages/Advantages';
 import StatisticCards from '../StatisticsCards/StatisticCards';
 import LogoTicker from '../LogoTicker/LogoTicker';
