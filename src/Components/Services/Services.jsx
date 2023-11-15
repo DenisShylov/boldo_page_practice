@@ -11,6 +11,7 @@ import {
 import React from 'react';
 import { CardContentItems } from '../../Constants/CardContentItems';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ManCard from './ManCard';
 const Services = () => {
   return (
     <Box
@@ -61,6 +62,7 @@ const Services = () => {
           );
         })}
       </Box>
+      <ManCard />
     </Box>
   );
 };

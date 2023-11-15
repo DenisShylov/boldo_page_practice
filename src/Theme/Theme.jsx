@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material';
+import { createTheme, createBox } from '@mui/material';
 
 export const Theme = createTheme({
   breakpoints: {
@@ -87,9 +87,11 @@ export const Theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          fontFamily: 'Open Sans',
+          fontWeight: 700,
+          fontSize: '20px',
           textTransform: 'none',
-          fontSize: '16px',
-          padding: 0,
+          padding: '16px 56px',
           borderRadius: '24px',
         },
       },
