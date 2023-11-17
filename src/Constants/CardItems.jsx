@@ -1,4 +1,4 @@
-export const ManCardItems = [
+export const CardItems = [
   {
     id: Math.random(),
     text: 'We connect our customers with the best.',

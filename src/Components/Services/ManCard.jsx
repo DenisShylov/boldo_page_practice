@@ -3,11 +3,19 @@ import React from 'react';
 import man from '../../Assets/man.png';
 import { ReactComponent as Statistic } from '../../Assets/Group.svg';
 import { Img } from './ManCard.styles';
-import { ManCardItems } from '../../Constants/ManCardItems';
+import { CardItems } from '../../Constants/CardItems';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 const ManCard = () => {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: '130px' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        width: '1200px',
+        justifyContent: 'space-between',
+        gap: '130px',
+      }}
+    >
       <Box sx={{ position: 'relative' }}>
         <Img src={man} />
         <Card
@@ -54,7 +62,7 @@ const ManCard = () => {
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {ManCardItems.map(({ id, text }) => (
+            {CardItems.map(({ id, text }) => (
               <Box key={{ id }} sx={{ display: 'flex' }}>
                 <CheckCircleIcon
                   sx={{ width: '36px', height: '36px', mr: '27px' }}

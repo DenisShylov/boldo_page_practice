@@ -11,3 +11,5 @@ export const LogoText = styled(Typography)(() => ({
   fontSize: '43.25px',
   fontWeight: 700,
 }));
+
+export const Img = styled('img')(() => ({}));

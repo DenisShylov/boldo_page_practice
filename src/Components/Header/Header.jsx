@@ -3,12 +3,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import React from 'react';
 //Local Files
 import { NavItems } from '../../Constants/NavItems';
-import { LogoBoldo, LogoText } from '../../Shared/Logo';
+import { LogoBoldo, LogoText } from '../../Shared/Img';
 import { LoginBtn, NavItemBtn, ToolbarLogo } from './Header.styles';
 
 const Header = () => {
   return (
-    <Container>
+    <Box sx={{ m: 0 }}>
       <AppBar
         position="static"
         sx={{
@@ -62,7 +62,7 @@ const Header = () => {
           </Box>
         </Toolbar>
       </AppBar>
-    </Container>
+    </Box>
   );
 };
 

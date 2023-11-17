@@ -67,6 +67,13 @@ export const Theme = createTheme({
     },
   },
   components: {
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {

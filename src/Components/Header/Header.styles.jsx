@@ -11,6 +11,7 @@ export const NavItemBtn = styled(Button)(({ theme }) => ({
   fontFamily: ['Open Sans', 'Roboto'].join(','),
   fontWeight: 600,
   lineHeight: '28px',
+  padding: 0,
 }));
 export const LoginBtn = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.text.white,

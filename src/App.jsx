@@ -3,6 +3,9 @@ import Header from './Components/Header/Header';
 import Hero from './Components/Hero/Hero';
 import Ellipse from './Assets/Ellipse 9.png';
 import Services from './Components/Services/Services';
+import EnterpriseTemplate from './Components/EterpriseTemplate/EnterpriseTemplate';
+import FAQ from './Components/FAQ/FAQ';
+import OurBlog from './Components/OurBlog/OurBlog';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
       </Box>
 
       <Services />
+      <EnterpriseTemplate />
+      <FAQ />
+      <OurBlog />
     </>
   );
 }

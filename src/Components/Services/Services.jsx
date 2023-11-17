@@ -12,6 +12,11 @@ import React from 'react';
 import { CardContentItems } from '../../Constants/CardContentItems';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ManCard from './ManCard';
+import WomanCard from './WomanCard';
+import { TitleSection } from '../../Shared/TitleSection';
+// Props for TitleSection
+const text = 'Our Services';
+const description = 'Handshake infographic mass market crowdfunding iteration.';
 const Services = () => {
   return (
     <Box
@@ -22,23 +27,7 @@ const Services = () => {
         width: '100%',
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '842px',
-          textAlign: 'center',
-        }}
-      >
-        <Typography variant="h4" sx={{ color: 'text.grey.lightest' }}>
-          Our Services
-        </Typography>
-        <Typography variant="h1">
-          Handshake infographic mass market crowdfunding iteration.
-        </Typography>
-      </Box>
+      <TitleSection title={text} description={description} />
       <Box sx={{ display: 'flex', padding: '80px 150px', gap: '100px' }}>
         {CardContentItems.map(({ id, img, title, text }) => {
           return (
@@ -53,7 +42,7 @@ const Services = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">
+                <Button size="small" sx={{ p: 0 }}>
                   Explore page <ArrowForwardIcon />
                 </Button>
               </CardActions>
@@ -63,6 +52,8 @@ const Services = () => {
         })}
       </Box>
       <ManCard />
+
+      <WomanCard />
     </Box>
   );
 };
