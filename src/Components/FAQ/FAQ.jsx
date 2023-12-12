@@ -13,6 +13,7 @@ import { BasicLayout } from '../../Shared/BasicLayout';
 const FAQ = () => {
   return (
     <BasicLayout
+      data-aos="fade-up"
       sx={{
         flexDirection: 'column',
         alignItems: 'center',

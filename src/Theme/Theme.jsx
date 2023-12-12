@@ -1,4 +1,4 @@
-import { createTheme, createBox } from '@mui/material';
+import { createTheme } from '@mui/material';
 
 export const Theme = createTheme({
   breakpoints: {
@@ -11,6 +11,16 @@ export const Theme = createTheme({
     },
   },
   typography: {
+    biggest: {
+      fontFamily: ['Manrope', 'Open Sans', 'Roboto', 'sans-serif'].join(','),
+      fontSize: '96px',
+      fontWeight: 400,
+    },
+    big: {
+      fontFamily: ['Manrope', 'Open Sans', 'Roboto', 'sans-serif'].join(','),
+      fontSize: '64px',
+      fontWeight: 400,
+    },
     h1: {
       fontFamily: ['Manrope', 'Open Sans', 'Roboto', 'sans-serif'].join(','),
       fontSize: '48px',
@@ -43,6 +53,12 @@ export const Theme = createTheme({
     },
     subtitle1: {
       fontFamily: ['Open Sans', 'Roboto', 'sans-serif'].join(','),
+      fontSize: '13px',
+      fontWeight: 400,
+      color: '#FFF',
+    },
+    subtitle2: {
+      fontFamily: ['Open Sans', 'Roboto', 'sans-serif'].join(','),
       fontSize: '12px',
       fontWeight: 400,
       color: '#FFF',
@@ -62,7 +78,10 @@ export const Theme = createTheme({
       },
       grey: {
         lightest: '#777',
-        light: '#F1F1F1',
+        light: '  #F1F1F1',
+      },
+      green: {
+        main: '#4FE9A4',
       },
     },
   },
@@ -116,6 +135,14 @@ export const Theme = createTheme({
         root: {
           color: '#0A2640',
           width: '50%',
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          width: '150px',
+          textAlign: 'left',
         },
       },
     },

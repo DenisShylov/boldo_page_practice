@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Container,
   IconButton,
   Typography,
 } from '@mui/material';
@@ -15,7 +14,10 @@ import { EnterpriseCard } from '../../Constants/EnterpriseCard';
 import { BasicLayout } from '../../Shared/BasicLayout';
 const EnterpriseTemplate = () => {
   return (
-    <Box sx={{ mt: '220px', p: ' 96px 150px', bgcolor: 'text.blue.dark' }}>
+    <Box
+      data-aos="fade-up"
+      sx={{ mt: '220px', p: ' 96px 150px', bgcolor: 'text.blue.dark' }}
+    >
       <BasicLayout
         sx={{
           alignItems: 'end',

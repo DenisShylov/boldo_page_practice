@@ -20,6 +20,8 @@ const description = 'Handshake infographic mass market crowdfunding iteration.';
 const Services = () => {
   return (
     <Box
+      data-aos="fade-up"
+      id="Services"
       sx={{
         display: 'flex',
         flexDirection: 'column',

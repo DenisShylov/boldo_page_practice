@@ -1,4 +1,10 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { OurBlogCard } from '../../Constants/OurBlogCard';
 import { BasicLayout } from '../../Shared/BasicLayout';
@@ -9,7 +15,10 @@ const title = 'Our Blog';
 const description = 'Value proposition accelerator product management venture';
 const OurBlog = () => {
   return (
-    <BasicLayout sx={{ flexDirection: 'column', alignItems: 'center' }}>
+    <BasicLayout
+      data-aos="fade-up"
+      sx={{ flexDirection: 'column', alignItems: 'center' }}
+    >
       <TitleSection title={title} description={description} />
       <BasicLayout>
         {OurBlogCard.map(({ mainImg, smImg, text, name }) => (
@@ -67,6 +76,16 @@ const OurBlog = () => {
           </Card>
         ))}
       </BasicLayout>
+      <Button
+        sx={{
+          border: '2px solid',
+          borderRadius: '56px',
+          color: 'text.blue.dark',
+          mt: '84px',
+        }}
+      >
+        Load more
+      </Button>
     </BasicLayout>
   );
 };

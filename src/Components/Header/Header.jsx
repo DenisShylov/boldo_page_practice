@@ -1,12 +1,30 @@
-import { AppBar, Box, Container, IconButton, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import React from 'react';
+import { AppBar, Box, IconButton, Toolbar } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 //Local Files
+import { useNavigate } from 'react-router-dom';
 import { NavItems } from '../../Constants/NavItems';
 import { LogoBoldo, LogoText } from '../../Shared/Img';
+import PopUp from '../PopUp/PopUp';
 import { LoginBtn, NavItemBtn, ToolbarLogo } from './Header.styles';
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/about');
+  };
+  useEffect(() => {
+    document
+      .querySelector('#About_2')
+      .addEventListener('click', handleNavigate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box sx={{ m: 0 }}>
       <AppBar
@@ -24,7 +42,9 @@ const Header = () => {
         <Toolbar>
           <ToolbarLogo>
             <LogoBoldo />
-            <LogoText>Boldo</LogoText>
+            <LogoText sx={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
+              Boldo
+            </LogoText>
           </ToolbarLogo>
           <IconButton
             color="inherit"
@@ -55,13 +75,25 @@ const Header = () => {
               gap: '40px',
             }}
           >
-            {NavItems.map((item) => (
-              <NavItemBtn key={item}>{item}</NavItemBtn>
+            {NavItems.map((item, index) => (
+              <NavItemBtn
+                to={item}
+                offset={-100}
+                duration={500}
+                smooth={true}
+                key={item}
+                id={`${item}_${index}`}
+              >
+                {item}
+              </NavItemBtn>
             ))}
-            <LoginBtn variant="contained">Log In</LoginBtn>
+            <LoginBtn variant="contained" onClick={handleOpen}>
+              Log In
+            </LoginBtn>
           </Box>
         </Toolbar>
       </AppBar>
+      <PopUp onClose={handleClose} open={open} />
     </Box>
   );
 };
