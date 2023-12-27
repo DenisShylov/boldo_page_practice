@@ -19,4 +19,4 @@ export const footerTableItems = [
   },
 ];
 
-// export const ourNumbers
+export const tableHeaders = ['Landings', 'Company', 'Resources'];

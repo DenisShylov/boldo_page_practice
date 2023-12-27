@@ -1,20 +1,37 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, Box, IconButton, Toolbar } from '@mui/material';
+import { Box, Toolbar } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 //Local Files
 import { useNavigate } from 'react-router-dom';
 import { NavItems } from '../../Constants/NavItems';
 import { LogoBoldo, LogoText } from '../../Shared/Img';
 import PopUp from '../PopUp/PopUp';
-import { LoginBtn, NavItemBtn, ToolbarLogo } from './Header.styles';
+import {
+  BurgerBtn,
+  CustomAppBar,
+  LoginBtn,
+  NavContainer,
+  NavItemBtn,
+  ToolbarLogo,
+} from './Header.styles';
+import MobileMenu from './MobileMenu/MobileMenu';
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleMenu = () => {
+    setMenu((prev) => !prev);
+  };
 
   const handleNavigate = () => {
     navigate('/about');
   };
+
   useEffect(() => {
     document
       .querySelector('#About_2')
@@ -22,23 +39,9 @@ const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   return (
-    <Box sx={{ m: 0 }}>
-      <AppBar
-        position="static"
-        sx={{
-          p: {
-            xs: '56px 30px 0 30px',
-            sm: '56px 100px 0 100px',
-            md: '56px 100px 0 100px',
-            lg: '56px 100px 0 100px',
-            xl: '56px 100px 0 100px',
-          },
-        }}
-      >
+    <Box sx={{ m: 0, position: 'relative' }}>
+      <CustomAppBar position="static">
         <Toolbar>
           <ToolbarLogo>
             <LogoBoldo />
@@ -46,35 +49,13 @@ const Header = () => {
               Boldo
             </LogoText>
           </ToolbarLogo>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            sx={{
-              mr: 2,
-              display: {
-                xs: 'block',
-                sm: 'block',
-                md: 'none',
-                lg: 'none',
-                xl: 'none',
-              },
-            }}
-          >
+          <BurgerBtn color="inherit" edge="start" onClick={handleMenu}>
             <MenuIcon />
-          </IconButton>
-          <Box
-            sx={{
-              display: {
-                xs: 'none',
-                sm: 'none',
-                md: 'flex',
-                lg: 'flex',
-                xl: 'flex',
-              },
-              gap: '40px',
-            }}
-          >
+          </BurgerBtn>
+          {menu && (
+            <MobileMenu handleOpen={handleOpen} handleClose={handleMenu} />
+          )}
+          <NavContainer>
             {NavItems.map((item, index) => (
               <NavItemBtn
                 to={item}
@@ -90,9 +71,9 @@ const Header = () => {
             <LoginBtn variant="contained" onClick={handleOpen}>
               Log In
             </LoginBtn>
-          </Box>
+          </NavContainer>
         </Toolbar>
-      </AppBar>
+      </CustomAppBar>
       <PopUp onClose={handleClose} open={open} />
     </Box>
   );

@@ -1,7 +1,6 @@
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import {
-  Box,
   Button,
-  Card,
   CardActions,
   CardContent,
   CardMedia,
@@ -10,30 +9,30 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { CardContentItems } from '../../Constants/CardContentItems';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ManCard from './ManCard';
-import WomanCard from './WomanCard';
+import { ColumnBox } from '../../Shared/CustomBox';
 import { TitleSection } from '../../Shared/TitleSection';
+import ManCard from './ManCard';
+import { CardContainer, CustomCard } from './Services.styles';
+import WomanCard from './WomanCard';
 // Props for TitleSection
 const text = 'Our Services';
 const description = 'Handshake infographic mass market crowdfunding iteration.';
+
 const Services = () => {
   return (
-    <Box
+    <ColumnBox
       data-aos="fade-up"
       id="Services"
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
       }}
     >
       <TitleSection title={text} description={description} />
-      <Box sx={{ display: 'flex', padding: '80px 150px', gap: '100px' }}>
+      <CardContainer>
         {CardContentItems.map(({ id, img, title, text }) => {
           return (
-            <Card key={id}>
+            <CustomCard key={id}>
               <CardMedia image={img} title={title} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -49,14 +48,14 @@ const Services = () => {
                 </Button>
               </CardActions>
               <Divider />
-            </Card>
+            </CustomCard>
           );
         })}
-      </Box>
+      </CardContainer>
       <ManCard />
 
       <WomanCard />
-    </Box>
+    </ColumnBox>
   );
 };
 

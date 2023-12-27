@@ -1,85 +1,59 @@
-import { Box, Button, Card, CardContent, Typography } from '@mui/material';
+import { Box, CardContent } from '@mui/material';
 import React from 'react';
-import man from '../../Assets/man.png';
+// Locale Files
 import { ReactComponent as Statistic } from '../../Assets/Group.svg';
-import { Img } from './ManCard.styles';
+import man from '../../Assets/man.png';
 import { CardItems } from '../../Constants/CardItems';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { ColumnBox, RowBox } from '../../Shared/CustomBox';
+import {
+  CheckIcon,
+  CustomCard,
+  DescrText,
+  Img,
+  ListContainer,
+  ListText,
+  ManCardContainer,
+  NumberText,
+  StartNowBtn,
+  Text,
+  WrapperText,
+} from './ManCard.styles';
+
 const ManCard = () => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        width: '1200px',
-        justifyContent: 'space-between',
-        gap: '130px',
-      }}
-    >
+    <ManCardContainer>
       <Box sx={{ position: 'relative' }}>
         <Img src={man} />
-        <Card
-          sx={{
-            maxWidth: 251,
-            bgcolor: 'white',
-            position: 'absolute',
-            top: '230px',
-            right: '57px',
-            borderRadius: '24px',
-            boxShadow: ' 0px 4px 32px 0px rgba(0, 0, 0, 0.12)',
-            gap: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            p: '40px',
-            pb: 0,
-          }}
-        >
-          <Statistic sx={{ borderRadius: '24px' }} />
+        <CustomCard>
+          <Statistic />
           <CardContent>
-            <Typography
-              gutterBottom
-              variant="h3"
-              sx={{ fontFamily: 'Manrope', fontWeight: 700 }}
-            >
+            <NumberText gutterBottom variant="h3">
               30%
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{ fontFamily: 'Manrope' }}
-              color="text.secondary"
-            >
-              More income in June
-            </Typography>
+            </NumberText>
+            <DescrText variant="h6">More income in June</DescrText>
           </CardContent>
-        </Card>
+        </CustomCard>
       </Box>
-      <Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-          <Box sx={{ width: '493px' }}>
-            <Typography variant="h2" sx={{ lineHeight: '56px' }}>
+      <ListContainer>
+        <ColumnBox sx={{ gap: '40px' }}>
+          <WrapperText>
+            <Text variant="h2">
               We connect our customers with the best, and help them keep up-and
               stay open.
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            </Text>
+          </WrapperText>
+          <ColumnBox sx={{ gap: '24px' }}>
             {CardItems.map(({ id, text }) => (
-              <Box key={{ id }} sx={{ display: 'flex' }}>
-                <CheckCircleIcon
-                  sx={{ width: '36px', height: '36px', mr: '27px' }}
-                />
-                <Typography variant="h4">{text}</Typography>
-              </Box>
+              <RowBox key={id}>
+                <CheckIcon />
+                <ListText variant="h4">{text}</ListText>
+              </RowBox>
             ))}
-          </Box>
-        </Box>
-        <Button
-          variant="contained"
-          sx={{ color: 'text.white', bgcolor: 'text.blue.dark', mt: '56px' }}
-        >
-          Start Now
-        </Button>
-      </Box>
-    </Box>
+          </ColumnBox>
+        </ColumnBox>
+        <StartNowBtn variant="contained">Start Now</StartNowBtn>
+      </ListContainer>
+    </ManCardContainer>
   );
 };
 

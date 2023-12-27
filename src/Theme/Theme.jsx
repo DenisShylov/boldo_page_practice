@@ -146,6 +146,23 @@ export const Theme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      defaultProps: {
+        PaperProps: {
+          sx: {
+            maxWidth: '893px',
+            borderRadius: '50px',
+            height: {
+              xs: '500px',
+              sm: '500px',
+              md: '700px',
+              lg: '893px',
+              xl: '893px',
+            },
+          },
+        },
+      },
+    },
   },
   mixins: {
     toolbar: {

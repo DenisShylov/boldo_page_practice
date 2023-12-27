@@ -6,10 +6,13 @@ export const LogoBoldo = styled(boldo)(({ theme }) => ({
   width: '26px',
   height: '33px',
 }));
-export const LogoText = styled(Typography)(() => ({
+export const LogoText = styled(Typography)(({ theme }) => ({
   fontFamily: 'Manrope',
   fontSize: '43.25px',
   fontWeight: 700,
+  [theme.breakpoints.down('md')]: {
+    fontSize: '30px',
+  },
 }));
 
 export const Img = styled('img')(() => ({}));

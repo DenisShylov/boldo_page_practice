@@ -1,54 +1,42 @@
 import {
-  Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { Img } from '../../Shared/Img';
+// Locale Files
 import FaqImg from '../../Assets/FAQ.png';
-import { AccordionIcon } from './FAQ.styles';
-import { BasicLayout } from '../../Shared/BasicLayout';
+import {
+  AccordionContent,
+  AccordionIcon,
+  ContentWrapper,
+  CustomAccordion,
+  FAQContainer,
+  Img,
+  Text,
+} from './FAQ.styles';
+
 const FAQ = () => {
   return (
-    <BasicLayout
-      data-aos="fade-up"
-      sx={{
-        flexDirection: 'column',
-        alignItems: 'center',
-        p: '124px 150px 158px 150px',
-      }}
-    >
-      <Img src={FaqImg} sx={{ width: '1100px' }} />
-      <BasicLayout
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '100px',
-          mt: '56px',
-          width: '100%',
-        }}
-      >
-        <Typography
-          variant="h2"
-          component={'div'}
-          sx={{ lineHeight: '56px', width: '500px' }}
-        >
+    <FAQContainer data-aos="fade-up">
+      <Img src={FaqImg} />
+      <ContentWrapper>
+        <Text variant="h2" component={'div'}>
           We connect our customers <br /> with the best, and help them keep
           up-and stay open.
-        </Typography>
+        </Text>
         <Box>
-          <Accordion sx={{ width: '500px' }}>
+          <CustomAccordion>
             <AccordionSummary
               sx={{ height: '50px' }}
               expandIcon={<AccordionIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography variant={'h4'} sx={{ lineHeight: '32px' }}>
+              <AccordionContent variant={'h4'}>
                 We connect our customers with the best?
-              </Typography>
+              </AccordionContent>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -57,16 +45,16 @@ const FAQ = () => {
                 eget.
               </Typography>
             </AccordionDetails>
-          </Accordion>
-          <Accordion sx={{ width: '500px' }}>
+          </CustomAccordion>
+          <CustomAccordion>
             <AccordionSummary
               expandIcon={<AccordionIcon />}
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography variant={'h4'} sx={{ lineHeight: '32px' }}>
+              <AccordionContent variant={'h4'}>
                 Android research & development rockstar?{' '}
-              </Typography>
+              </AccordionContent>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -75,10 +63,10 @@ const FAQ = () => {
                 eget.
               </Typography>
             </AccordionDetails>
-          </Accordion>
+          </CustomAccordion>
         </Box>
-      </BasicLayout>
-    </BasicLayout>
+      </ContentWrapper>
+    </FAQContainer>
   );
 };
 

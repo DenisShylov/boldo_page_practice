@@ -1,91 +1,71 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React from 'react';
 //Local files
-import group from '../../Assets/Group 263.png';
 import groupColumn from '../../Assets/Group 208.png';
+import group from '../../Assets/Group 263.png';
 import pieGraph from '../../Assets/Pie Graph.png';
-import { Card, CardImg } from './StatisticCards.styles';
 import { itemCard } from '../../Constants/PercentItemCard';
+import { ColumnBox } from '../../Shared/CustomBox';
+import {
+  Card1,
+  Card2,
+  Card3,
+  CardImg,
+  CardLineBig,
+  CardLineSmall,
+  CardLineWrapper,
+  Line,
+  LineContainer,
+  StatisticCardsContainer,
+} from './StatisticCards.styles';
 
 const StatisticCards = () => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        width: '494px',
-      }}
-    >
-      <Card sx={{ mb: '25px' }}>
+    <StatisticCardsContainer>
+      <Card1>
         <CardImg
           src={group}
           width={47}
           height={9}
           sx={{ ml: '14.3px', mt: '14.3px' }}
         />
-        <Box
+        <ColumnBox
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
             gap: '19px',
             mt: '35px',
           }}
         >
           {itemCard.map(({ id, width, percent, color }) => {
             return (
-              <Box
-                key={id}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '14.3px',
-                  ml: '29px',
-                }}
-              >
-                <Box
-                  component={'span'}
-                  sx={{
-                    width: '54px',
-                    height: ' 11.777px',
-                    borderRadius: ' 14.132px',
-                    background: '#95ABBC',
-                  }}
-                ></Box>
-                <Box
+              <CardLineWrapper key={id}>
+                <CardLineSmall component={'span'}></CardLineSmall>
+                <CardLineBig
                   component={'span'}
                   sx={{
                     width,
-                    height: ' 11.777px',
-                    borderRadius: '14.132px',
                     bgcolor: color,
                   }}
-                ></Box>
+                ></CardLineBig>
                 <Typography variant={'subtitle1'}>{percent}</Typography>
-              </Box>
+              </CardLineWrapper>
             );
           })}
-        </Box>
-      </Card>
+        </ColumnBox>
+      </Card1>
 
-      <Card
-        sx={{
-          width: '192px',
-          height: '165px',
-          mr: '40px',
-        }}
-      >
+      <Card2>
         <CardImg
           src={group}
           width={47}
           height={9}
           sx={{ ml: '14.3px', mt: '14.3px' }}
         />
-        <Container>
+        <Container sx={{ textAlign: 'center' }}>
           <CardImg src={groupColumn} />
         </Container>
-      </Card>
+      </Card2>
 
-      <Card sx={{ width: '262px', height: '165px' }}>
+      <Card3>
         <CardImg
           src={group}
           width={47}
@@ -93,44 +73,24 @@ const StatisticCards = () => {
           sx={{ ml: '14.3px', mt: '14.3px' }}
         />
 
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            mt: '25px',
-          }}
-        >
+        <LineContainer>
           <CardImg src={pieGraph} />
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-            <Box
+          <ColumnBox sx={{ gap: '14px' }}>
+            <Line
               sx={{
                 width: '72px',
-                height: '8px',
-                bgcolor: '#95ABBC',
-                borderRadius: '14.132px',
               }}
-            ></Box>
-            <Box
-              sx={{
-                width: '68px',
-                height: '8px',
-                bgcolor: '#95ABBC',
-                borderRadius: '14.132px',
-              }}
-            ></Box>
-            <Box
+            />
+            <Line />
+            <Line
               sx={{
                 width: '76px',
-                height: '8px',
-                bgcolor: '#95ABBC',
-                borderRadius: '14.132px',
               }}
-            ></Box>
-          </Box>
-        </Box>
-      </Card>
-    </Box>
+            />
+          </ColumnBox>
+        </LineContainer>
+      </Card3>
+    </StatisticCardsContainer>
   );
 };
 

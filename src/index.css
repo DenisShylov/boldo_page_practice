@@ -3,3 +3,7 @@
   border-radius: 50px;
   overflow-y: visible;
 }
+
+.css-ewyo4k-MuiFormControl-root-MuiTextField-root {
+  width: '290px' !important;
+}

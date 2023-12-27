@@ -1,32 +1,23 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
+// Locale Files
 import { OurBlogCard } from '../../Constants/OurBlogCard';
-import { BasicLayout } from '../../Shared/BasicLayout';
+import { ColumnBox, RowBox } from '../../Shared/CustomBox';
 import { Img } from '../../Shared/Img';
 import { TitleSection } from '../../Shared/TitleSection';
+import { CardContainer, LoadMoreBtn, Wrapper } from './OurBlog.styles';
+
 // Props for TitleSection
 const title = 'Our Blog';
 const description = 'Value proposition accelerator product management venture';
+
 const OurBlog = () => {
   return (
-    <BasicLayout
-      data-aos="fade-up"
-      sx={{ flexDirection: 'column', alignItems: 'center' }}
-    >
+    <ColumnBox data-aos="fade-up" sx={{ alignItems: 'center' }}>
       <TitleSection title={title} description={description} />
-      <BasicLayout>
-        {OurBlogCard.map(({ mainImg, smImg, text, name }) => (
-          <Card
-            sx={{
-              maxWidth: '300px',
-            }}
-          >
+      <Wrapper>
+        {OurBlogCard.map(({ id, mainImg, smImg, text, name }) => (
+          <CardContainer key={id}>
             <CardContent
               sx={{
                 display: 'flex',
@@ -44,7 +35,7 @@ const OurBlog = () => {
               >
                 <Img src={mainImg} sx={{ width: '100%', height: '209px' }} />
               </CardMedia>
-              <BasicLayout
+              <RowBox
                 sx={{
                   alignItems: 'center',
                   gap: '12px',
@@ -59,34 +50,23 @@ const OurBlog = () => {
                 <Typography variant="h5" sx={{ lineHeight: '28px' }}>
                   November 22, 2021
                 </Typography>
-              </BasicLayout>
+              </RowBox>
               <Typography
                 variant="h4"
                 sx={{ lineHeight: '32px', width: '300px', height: '99px' }}
               >
                 {text}
               </Typography>
-              <BasicLayout sx={{ gap: '12px', alignItems: 'center' }}>
+              <RowBox sx={{ gap: '12px', alignItems: 'center' }}>
                 <Img src={smImg} />
-                <Typography variant="h5" sx={{}}>
-                  {name}
-                </Typography>
-              </BasicLayout>
+                <Typography variant="h5">{name}</Typography>
+              </RowBox>
             </CardContent>
-          </Card>
+          </CardContainer>
         ))}
-      </BasicLayout>
-      <Button
-        sx={{
-          border: '2px solid',
-          borderRadius: '56px',
-          color: 'text.blue.dark',
-          mt: '84px',
-        }}
-      >
-        Load more
-      </Button>
-    </BasicLayout>
+      </Wrapper>
+      <LoadMoreBtn>Load more</LoadMoreBtn>
+    </ColumnBox>
   );
 };
 
