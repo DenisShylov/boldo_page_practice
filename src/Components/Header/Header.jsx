@@ -1,5 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Toolbar } from '@mui/material';
+import { Box, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 //Local Files
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,8 @@ import {
 import MobileMenu from './MobileMenu/MobileMenu';
 
 const Header = () => {
+  const theme = useTheme();
+  const screenSize = useMediaQuery(theme.breakpoints.up('md'));
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
@@ -31,6 +33,11 @@ const Header = () => {
   const handleNavigate = () => {
     navigate('/about');
   };
+  useEffect(() => {
+    if (screenSize) {
+      setMenu(false);
+    }
+  }, [screenSize]);
 
   useEffect(() => {
     document
@@ -53,7 +60,11 @@ const Header = () => {
             <MenuIcon />
           </BurgerBtn>
           {menu && (
-            <MobileMenu handleOpen={handleOpen} handleClose={handleMenu} />
+            <MobileMenu
+              handleOpen={handleOpen}
+              handleClose={handleMenu}
+              screenSize={screenSize}
+            />
           )}
           <NavContainer>
             {NavItems.map((item, index) => (

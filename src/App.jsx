@@ -14,33 +14,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Main />
-            // <>
-            //   <Container
-            //     maxWidth="xl"
-            //     disableGutters
-            //     sx={{
-            //       background: '#0A2640 ',
-            //       backgroundImage: `url(${Ellipse})`,
-            //       backgroundRepeat: 'no-repeat',
-            //       backgroundPosition: '100% 0',
-            //     }}
-            //   >
-            //     <Header />
-            //     <Hero />
-            //   </Container>
-
-            //   <Services />
-            //   <EnterpriseTemplate />
-            //   <FAQ />
-            //   <OurBlog />
-            //   <Footer />
-            // </>
-          }
-        />
+        <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </>

@@ -18,7 +18,7 @@ import {
 
 const EnterpriseTemplate = () => {
   const theme = useTheme();
-  const screensize = useMediaQuery(theme.breakpoints.down('lg'));
+  const screenSize = useMediaQuery(theme.breakpoints.down('lg'));
 
   const maxSteps = EnterpriseCard.length - 1;
   const [startStep, setStartStep] = useState(0);
@@ -26,17 +26,20 @@ const EnterpriseTemplate = () => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    if (screensize) {
+    if (!screenSize && activeStep === 1) {
+      setActiveStep(3);
+    }
+    if (screenSize) {
       setStartStep(activeStep - 1);
-    } else if (!screensize) {
+    } else if (!screenSize) {
       setStartStep(Math.sign(activeStep - 3) === -1 ? 0 : activeStep - 3);
     }
 
     setCards(EnterpriseCard.slice(startStep, activeStep));
-  }, [startStep, activeStep, screensize]);
+  }, [startStep, activeStep, screenSize]);
 
   const handleNext = () => {
-    if (screensize) {
+    if (screenSize) {
       setStartStep((prev) => prev + 1);
       setActiveStep((prev) => prev + 1);
     } else {
@@ -46,7 +49,7 @@ const EnterpriseTemplate = () => {
   };
 
   const handleBack = () => {
-    if (screensize) {
+    if (screenSize) {
       setStartStep((prev) => prev - 1);
       setActiveStep((prev) => prev - 1);
     } else {
@@ -64,13 +67,13 @@ const EnterpriseTemplate = () => {
         <RowBox sx={{ gap: '28px' }}>
           <ArrowIcon
             onClick={handleBack}
-            disabled={screensize ? activeStep === 1 : activeStep === 3}
+            disabled={screenSize ? activeStep === 1 : activeStep === 3}
           >
             <ArrowBackOutlinedIcon />
           </ArrowIcon>
           <ArrowIcon
             onClick={handleNext}
-            disabled={screensize ? activeStep === 6 : activeStep === maxSteps}
+            disabled={screenSize ? activeStep === 6 : activeStep === maxSteps}
           >
             <ArrowForwardOutlinedIcon />
           </ArrowIcon>

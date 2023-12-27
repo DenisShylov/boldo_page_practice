@@ -7,6 +7,7 @@ export const LogoBoldo = styled(boldo)(({ theme }) => ({
   height: '33px',
 }));
 export const LogoText = styled(Typography)(({ theme }) => ({
+  cursor: 'pointer',
   fontFamily: 'Manrope',
   fontSize: '43.25px',
   fontWeight: 700,

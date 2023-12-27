@@ -7,6 +7,20 @@ import {
   styled,
 } from '@mui/material';
 
+export const CustomDialogContent = styled(DialogContent)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  height: '893px',
+  width: '893px',
+  paddingInline: '87px',
+  [theme.breakpoints.down('md')]: {
+    alignItems: ' center',
+    width: 'auto',
+    height: '500px',
+  },
+}));
+
 export const PopUpText = styled(DialogContentText)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -14,12 +28,12 @@ export const PopUpText = styled(DialogContentText)(({ theme }) => ({
   width: '719px',
   height: '140px',
   textAlign: 'center',
-  [theme.breakpoints.down('xl')]: {
-    width: '540px',
-  },
+
   [theme.breakpoints.down('md')]: {
     width: '300px',
+
     fontSize: '28px',
+
     lineHeight: '28px',
   },
 }));
@@ -32,20 +46,6 @@ export const PopUpActions = styled(DialogActions)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
-  },
-}));
-
-export const CustomDialogContent = styled(DialogContent)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  height: '893px',
-  width: '893px',
-  paddingInline: '87px',
-  [theme.breakpoints.down('md')]: {
-    alignItems: ' center',
-    width: '300px',
-    height: '500px',
   },
 }));
 

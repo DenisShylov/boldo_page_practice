@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { CardContentItems } from '../../Constants/CardContentItems';
 import { ColumnBox } from '../../Shared/CustomBox';
-import { TitleSection } from '../../Shared/TitleSection';
+import { TitleSection } from '../../Shared/TitleSection/TitleSection';
 import ManCard from './ManCard';
 import { CardContainer, CustomCard } from './Services.styles';
 import WomanCard from './WomanCard';

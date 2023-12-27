@@ -4,7 +4,7 @@ import React from 'react';
 import { OurBlogCard } from '../../Constants/OurBlogCard';
 import { ColumnBox, RowBox } from '../../Shared/CustomBox';
 import { Img } from '../../Shared/Img';
-import { TitleSection } from '../../Shared/TitleSection';
+import { TitleSection } from '../../Shared/TitleSection/TitleSection';
 import { CardContainer, LoadMoreBtn, Wrapper } from './OurBlog.styles';
 
 // Props for TitleSection

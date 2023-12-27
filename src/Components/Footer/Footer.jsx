@@ -19,8 +19,15 @@ import TableFooter from './TableFooter/TableFooter';
 const Footer = () => {
   const theme = useTheme();
   const screenSize = useMediaQuery(theme.breakpoints.down('lg'));
-
+  const handleStartPage = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
   const [inputValue, setInputValue] = useState('');
+
   return (
     <FooterContainer data-aos="fade-up">
       <BannerContainer>
@@ -43,7 +50,12 @@ const Footer = () => {
         <Box sx={screenSize ? '' : { mr: '180px' }}>
           <RowBox sx={{ alignItems: 'center', gap: '11px' }}>
             <LogoBoldo sx={{ color: 'text.blue.dark' }} />
-            <LogoText sx={{ color: 'text.blue.dark' }}>Boldo</LogoText>
+            <LogoText
+              sx={{ color: 'text.blue.dark' }}
+              onClick={handleStartPage}
+            >
+              Boldo
+            </LogoText>
           </RowBox>
           <Box>
             <MainText variant="h5">

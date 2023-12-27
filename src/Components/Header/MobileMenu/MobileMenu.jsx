@@ -5,8 +5,9 @@ import { NavItems } from '../../../Constants/NavItems';
 import { ColumnBox } from '../../../Shared/CustomBox';
 import { LoginBtn, NavItemBtn } from '../Header.styles';
 
-const MobileMenu = ({ handleOpen, handleClose }) => {
+const MobileMenu = ({ handleOpen, handleClose, screenSize }) => {
   const navigate = useNavigate();
+
   const handleHome = ({ target: { id } }) => {
     if (id === 'About_2') {
       navigate('/about');
@@ -18,15 +19,19 @@ const MobileMenu = ({ handleOpen, handleClose }) => {
   };
   return (
     <ColumnBox
-      sx={{
-        position: 'absolute',
-        top: '40px',
-        right: '-43px',
-        border: '1px solid',
-        borderRadius: '10px',
-        p: '5px ',
-        textAlign: 'center',
-      }}
+      sx={
+        screenSize
+          ? { display: 'none' }
+          : {
+              position: 'absolute',
+              top: '40px',
+              right: '-18px',
+              border: '1px solid',
+              borderRadius: '10px',
+              p: '5px ',
+              textAlign: 'center',
+            }
+      }
     >
       {NavItems.map((item, index) => (
         <NavItemBtn

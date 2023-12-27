@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 //Local files
 import groupColumn from '../../Assets/Group 208.png';
@@ -20,6 +20,9 @@ import {
 } from './StatisticCards.styles';
 
 const StatisticCards = () => {
+  const theme = useTheme();
+  const screenSize = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <StatisticCardsContainer>
       <Card1>
@@ -38,14 +41,17 @@ const StatisticCards = () => {
           {itemCard.map(({ id, width, percent, color }) => {
             return (
               <CardLineWrapper key={id}>
-                <CardLineSmall component={'span'}></CardLineSmall>
+                <CardLineSmall
+                  sx={screenSize ? { display: 'none' } : { display: 'block' }}
+                  component={'span'}
+                />
                 <CardLineBig
                   component={'span'}
                   sx={{
                     width,
                     bgcolor: color,
                   }}
-                ></CardLineBig>
+                />
                 <Typography variant={'subtitle1'}>{percent}</Typography>
               </CardLineWrapper>
             );
