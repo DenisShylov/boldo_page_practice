@@ -1,93 +1,104 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Typography,
-} from '@mui/material';
-import React from 'react';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import { Img } from '../Services/WomanCard.styles';
+import { Typography, useMediaQuery, useTheme } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+// Locale Files
 import { EnterpriseCard } from '../../Constants/EnterpriseCard';
-import { BasicLayout } from '../../Shared/BasicLayout';
+import { ColumnBox, RowBox } from '../../Shared/CustomBox';
+import {
+  ArrowIcon,
+  CustomCard,
+  CustomCardContent,
+  CustomCardMedia,
+  EnterpriseTemplateContainer,
+  Img,
+  TitleContainer,
+  TitleText,
+} from './Enterprise.styles';
+
 const EnterpriseTemplate = () => {
+  const theme = useTheme();
+  const screenSize = useMediaQuery(theme.breakpoints.down('lg'));
+
+  const maxSteps = EnterpriseCard.length - 1;
+  const [startStep, setStartStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    if (!screenSize && activeStep === 1) {
+      setActiveStep(3);
+    }
+    if (screenSize) {
+      setStartStep(activeStep - 1);
+    } else if (!screenSize) {
+      setStartStep(Math.sign(activeStep - 3) === -1 ? 0 : activeStep - 3);
+    }
+
+    setCards(EnterpriseCard.slice(startStep, activeStep));
+  }, [startStep, activeStep, screenSize]);
+
+  const handleNext = () => {
+    if (screenSize) {
+      setStartStep((prev) => prev + 1);
+      setActiveStep((prev) => prev + 1);
+    } else {
+      setStartStep(2);
+      setActiveStep(5);
+    }
+  };
+
+  const handleBack = () => {
+    if (screenSize) {
+      setStartStep((prev) => prev - 1);
+      setActiveStep((prev) => prev - 1);
+    } else {
+      setStartStep(0);
+      setActiveStep(3);
+    }
+  };
+
   return (
-    <Box
-      data-aos="fade-up"
-      sx={{ mt: '220px', p: ' 96px 150px', bgcolor: 'text.blue.dark' }}
-    >
-      <BasicLayout
-        sx={{
-          alignItems: 'end',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Typography
-          variant="h1"
-          sx={{
-            color: 'text.white',
-            width: '716px',
-            height: '139px',
-            lineHeight: '72px',
-          }}
-        >
+    <EnterpriseTemplateContainer data-aos="fade-up">
+      <TitleContainer>
+        <TitleText variant="h1">
           An enterprise template to ramp up your company website
-        </Typography>
-        <BasicLayout sx={{ gap: '28px' }}>
-          <IconButton sx={{ bgcolor: 'white' }}>
+        </TitleText>
+        <RowBox sx={{ gap: '28px' }}>
+          <ArrowIcon
+            onClick={handleBack}
+            disabled={screenSize ? activeStep === 1 : activeStep === 3}
+          >
             <ArrowBackOutlinedIcon />
-          </IconButton>
-          <IconButton sx={{ bgcolor: 'white' }}>
+          </ArrowIcon>
+          <ArrowIcon
+            onClick={handleNext}
+            disabled={screenSize ? activeStep === 6 : activeStep === maxSteps}
+          >
             <ArrowForwardOutlinedIcon />
-          </IconButton>
-        </BasicLayout>
-      </BasicLayout>
-      <Box
+          </ArrowIcon>
+        </RowBox>
+      </TitleContainer>
+      <RowBox
         sx={{
-          display: 'flex',
           justifyContent: 'center',
           gap: '22px',
           mt: '72px',
         }}
       >
-        {EnterpriseCard.map(({ img, text, name, role }) => (
-          <Card
-            key={name}
-            sx={{
-              height: 'fit-content',
-              maxWidth: '350px',
-              borderRadius: '12px',
-            }}
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                padding: '40px',
-                gap: '40px',
-              }}
-            >
+        {cards.map(({ id, img, text, name, role }) => (
+          <CustomCard key={id}>
+            <CustomCardContent>
               <Typography
                 variant="h3"
                 sx={{ lineHeight: '36px', width: '270px' }}
               >
                 {text}
               </Typography>
-              <CardMedia
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  width: '300px',
-                  height: '58px',
-                }}
-              >
+              <CustomCardMedia>
                 <Img src={img} />
-                <BasicLayout
+                <ColumnBox
                   sx={{
-                    flexDirection: 'column',
                     alignItems: 'flex-start',
                     marginLeft: '16px',
                   }}
@@ -96,13 +107,13 @@ const EnterpriseTemplate = () => {
                     {name}
                   </Typography>
                   <Typography variant="h5">{role}</Typography>
-                </BasicLayout>
-              </CardMedia>
-            </CardContent>
-          </Card>
+                </ColumnBox>
+              </CustomCardMedia>
+            </CustomCardContent>
+          </CustomCard>
         ))}
-      </Box>
-    </Box>
+      </RowBox>
+    </EnterpriseTemplateContainer>
   );
 };
 

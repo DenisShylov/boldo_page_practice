@@ -1,39 +1,20 @@
-import { Box } from '@mui/material';
 import React from 'react';
+// Locale Files
+import { ColumnBox } from '../../Shared/CustomBox';
 import Advantages from '../Advantages/Advantages';
-import StatisticCards from '../StatisticsCards/StatisticCards';
 import LogoTicker from '../LogoTicker/LogoTicker';
+import StatisticCards from '../StatisticsCards/StatisticCards';
+import { HeroContainer } from './Hero.styles';
+
 const Hero = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', mb: '56px' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: {
-            xs: 'column',
-            sm: 'column',
-            md: 'column',
-            lg: 'row',
-            xl: 'row',
-          },
-          alignItems: 'center',
-          mt: '162px',
-          p: {
-            xs: ' 0 30px',
-            sm: ' 0 100px',
-            md: ' 0 100px',
-            lg: ' 0 100px',
-            xl: ' 0 100px',
-          },
-          justifyContent: 'space-between',
-          mb: '56px',
-        }}
-      >
+    <ColumnBox sx={{ mb: '56px' }}>
+      <HeroContainer>
         <Advantages />
         <StatisticCards />
-      </Box>
+      </HeroContainer>
       <LogoTicker />
-    </Box>
+    </ColumnBox>
   );
 };
 

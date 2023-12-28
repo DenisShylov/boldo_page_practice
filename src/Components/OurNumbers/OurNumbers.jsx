@@ -1,7 +1,14 @@
+import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { ColumnBox } from '../../Shared/ColumnBox';
-import { Box, Typography } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
+// Locale Files
+import { ColumnBox } from '../../Shared/CustomBox';
+import {
+  BigTitle,
+  NumberTickerContainer,
+  OurNumberContainer,
+  TextContainer,
+} from './OurNumbers.styles';
 
 const OurNumbers = () => {
   const { ref, inView } = useInView();
@@ -32,38 +39,19 @@ const OurNumbers = () => {
   };
 
   return (
-    <ColumnBox
-      data-aos="fade-up"
-      ref={ref}
-      sx={{
-        bgcolor: 'text.blue.dark',
-        alignItems: 'center',
-        textAlign: 'center',
-        py: '96px',
-        mt: '96px',
-      }}
-    >
-      <ColumnBox sx={{ width: '842px', gap: '12px' }}>
+    <OurNumberContainer data-aos="fade-up" ref={ref}>
+      <TextContainer>
         <Typography
           variant="h4"
           sx={{ color: 'text.grey.light', lineHeight: '32px' }}
         >
           Our numbers
         </Typography>
-        <Typography
-          variant="h1"
-          sx={{ lineHeight: '72px', color: 'text.white' }}
-        >
+        <BigTitle variant="h1">
           Handshake infographic mass market crowdfunding iteration.
-        </Typography>
-      </ColumnBox>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '1000px',
-        }}
-      >
+        </BigTitle>
+      </TextContainer>
+      <NumberTickerContainer>
         {[1, 2, 3].map((item, index) => (
           <ColumnBox
             key={item}
@@ -72,13 +60,13 @@ const OurNumbers = () => {
             <Typography variant="biggest" color="text.green.main">
               {numberRenderCondition(index)}
             </Typography>
-            <Typography variant="h3" sx={{ color: 'text.grey.light' }}>
+            <Typography variant="h3" color="text.grey.light">
               Cool feature title
             </Typography>
           </ColumnBox>
         ))}
-      </Box>
-    </ColumnBox>
+      </NumberTickerContainer>
+    </OurNumberContainer>
   );
 };
 

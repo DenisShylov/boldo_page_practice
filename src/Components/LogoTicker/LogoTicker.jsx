@@ -1,7 +1,16 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material';
-import React from 'react';
-import { BoldoLogo, PrestoLogo, LogoText } from './LogoTicker.styles';
+import { useMediaQuery, useTheme } from '@mui/material';
+import React, { Fragment } from 'react';
 import Marquee from 'react-fast-marquee';
+// Locale Files
+import { LogoTickerIds } from '../../Constants/LogoTickerIds';
+import { RowBox } from '../../Shared/CustomBox';
+import {
+  BoldoLogo,
+  LogoText,
+  LogoTickerContainer,
+  LogoWrapper,
+  PrestoLogo,
+} from './LogoTicker.styles';
 
 const LogoTicker = () => {
   const theme = useTheme();
@@ -16,69 +25,22 @@ const LogoTicker = () => {
       gradientWidth={conditionForGradientSize}
       autoFill
     >
-      <Box
-        sx={{
-          display: 'flex',
-          height: '93px',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background:
-            'linear-gradient(90deg, #0A2640 0%, rgba(10, 38, 64, 0.11) 31.6%, rgba(10, 38, 64, 0.00) 72.89%, #0A2640 97.87%)',
-        }}
-      >
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          {[1, 2, 3].map((item) => (
-            <>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  gap: {
-                    xs: 0,
-                    sm: '10px',
-                    md: '10px',
-                    lg: '10px',
-                    xl: '10px',
-                  },
-                  mr: {
-                    xs: '10px',
-                    sm: '20px',
-                    md: '20px',
-                    lg: '40px',
-                    xl: '40px',
-                  },
-                }}
-              >
+      <LogoTickerContainer>
+        <RowBox sx={{ justifyContent: 'center' }}>
+          {LogoTickerIds.map(({ id }) => (
+            <Fragment key={id}>
+              <LogoWrapper>
                 <BoldoLogo />
                 <LogoText variant={'span'}>Boldo</LogoText>{' '}
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  gap: {
-                    xs: 0,
-                    sm: '10px',
-                    md: '10px',
-                    lg: '10px',
-                    xl: '10px',
-                  },
-                  mr: {
-                    xs: '10px',
-                    sm: '20px',
-                    md: '20px',
-                    lg: '40px',
-                    xl: '40px',
-                  },
-                }}
-              >
+              </LogoWrapper>
+              <LogoWrapper>
                 <PrestoLogo />
                 <LogoText variant={'span'}>Presto</LogoText>
-              </Box>
-            </>
+              </LogoWrapper>
+            </Fragment>
           ))}
-        </Box>
-      </Box>
+        </RowBox>
+      </LogoTickerContainer>
     </Marquee>
   );
 };
