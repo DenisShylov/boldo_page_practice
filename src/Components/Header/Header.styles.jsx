@@ -36,6 +36,7 @@ export const LoginBtn = styled(Button)(({ theme }) => ({
 
 export const NavContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
+  alignItems: 'center',
   gap: '40px',
   [theme.breakpoints.down('md')]: {
     display: 'none',

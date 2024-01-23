@@ -2,11 +2,12 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import { Box, CardContent, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 // Locale Files
 import { ReactComponent as Ellipse } from '../../Assets/Ellipse.svg';
 import { ReactComponent as PieImg } from '../../Assets/Pie Graph.svg';
 import woman from '../../Assets/woman.png';
+import man from '../../Assets/man.png';
 import { CardItems } from '../../Constants/CardItems';
 import { ColumnBox, RowBox } from '../../Shared/CustomBox';
 import {
@@ -20,6 +21,13 @@ import {
 } from './WomanCard.styles';
 
 const WomanCard = () => {
+  const [cliked, setCliked] = useState(false);
+  const togglePhoto = cliked ? man : woman;
+
+  const handleChangeImg = ({ target: { id } }) => {
+    id === 'tab' ? setCliked((prev) => !prev) : setCliked(false);
+  };
+
   return (
     <WomanCardContainer>
       <ListWrapper>
@@ -29,7 +37,7 @@ const WomanCard = () => {
             stay open.
           </ListText>
         </Box>
-        <ColumnBox sx={{ gap: '24px' }}>
+        <ColumnBox sx={{ gap: '24px' }} onClick={handleChangeImg}>
           {CardItems.map(({ id, text }, index) => {
             if (index === 0) {
               return (
@@ -52,7 +60,9 @@ const WomanCard = () => {
                   <RemoveRedEyeOutlinedIcon
                     sx={{ width: '36px', height: '36px', mr: '27px' }}
                   />
-                  <ItemText variant="h4">{text}</ItemText>
+                  <ItemText variant="h4" id={'tab'}>
+                    {text}
+                  </ItemText>
                 </ItemWrapper>
               );
             } else {
@@ -75,7 +85,7 @@ const WomanCard = () => {
         </ColumnBox>
       </ListWrapper>
       <Box sx={{ position: 'relative' }}>
-        <Img src={woman} />
+        <Img src={togglePhoto} />
 
         <CustomCard>
           <PieImg

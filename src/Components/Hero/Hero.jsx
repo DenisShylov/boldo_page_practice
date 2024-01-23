@@ -9,7 +9,7 @@ import { HeroContainer } from './Hero.styles';
 const Hero = () => {
   return (
     <ColumnBox sx={{ mb: '56px' }}>
-      <HeroContainer>
+      <HeroContainer data-aos="fade-up">
         <Advantages />
         <StatisticCards />
       </HeroContainer>

@@ -44,7 +44,7 @@ const ManCard = () => {
           </WrapperText>
           <ColumnBox sx={{ gap: '24px' }}>
             {CardItems.map(({ id, text }) => (
-              <RowBox key={id}>
+              <RowBox key={id} sx={{ alignItems: 'center' }}>
                 <CheckIcon />
                 <ListText variant="h4">{text}</ListText>
               </RowBox>

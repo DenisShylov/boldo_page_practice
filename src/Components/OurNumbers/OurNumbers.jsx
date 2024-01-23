@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 // Locale Files
+import CountUp from 'react-countup';
 import { ColumnBox } from '../../Shared/CustomBox';
 import {
   BigTitle,
@@ -12,35 +13,21 @@ import {
 
 const OurNumbers = () => {
   const { ref, inView } = useInView();
-  const [firstNumber, setFirstNumber] = useState(120);
-  const [secondNumber, setSecondNumber] = useState(10000);
-  const [thirdNumber, setThirdNumber] = useState(240);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (inView) {
-        setFirstNumber((prev) => (prev <= 0 ? 120 : prev - 1));
-        setSecondNumber((prev) => (prev <= 0 ? 10000 : prev - 1));
-        setThirdNumber((prev) => (prev <= 0 ? 240 : prev - 1));
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [inView]);
 
   const numberRenderCondition = (index) => {
     if (index === 0) {
-      return `${firstNumber}m`;
+      return <CountUp start={0} end={120} />;
     } else if (index === 1) {
-      return secondNumber;
+      return <CountUp start end={10000} />;
     } else {
-      return thirdNumber;
+      return <CountUp start={0} end={240} />;
     }
   };
 
   return (
     <OurNumberContainer data-aos="fade-up" ref={ref}>
       <TextContainer>
+        <CountUp start={0} end={120} />
         <Typography
           variant="h4"
           sx={{ color: 'text.grey.light', lineHeight: '32px' }}
@@ -58,7 +45,12 @@ const OurNumbers = () => {
             sx={{ alignItems: 'flex-start', width: '200px', mt: '84px' }}
           >
             <Typography variant="biggest" color="text.green.main">
-              {numberRenderCondition(index)}
+              {inView ? numberRenderCondition(index) : null}
+              {index === 0 ? (
+                <Typography component={'span'} sx={{ fontSize: 'inherit' }}>
+                  m
+                </Typography>
+              ) : null}
             </Typography>
             <Typography variant="h3" color="text.grey.light">
               Cool feature title

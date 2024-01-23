@@ -14,7 +14,7 @@ import { AboutHeroContainer } from './About.styles';
 
 const About = () => {
   return (
-    <Container>
+    <Container maxWidth="xl">
       <AboutHeroContainer>
         <Header />;
         <AboutTitle />
