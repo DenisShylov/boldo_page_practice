@@ -44,6 +44,7 @@ export const ListText = styled(Typography)(({ theme }) => ({
 }));
 
 export const ItemWrapper = styled(RowBox)(({ theme }) => ({
+  cursor: 'pointer',
   alignItems: 'center',
   backgroundColor: theme.palette.text.blue.dark,
   color: theme.palette.text.white,

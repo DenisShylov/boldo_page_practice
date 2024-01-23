@@ -26,10 +26,10 @@ export const EnterpriseCard = [
   },
   {
     id: uuid(),
-    img: Albus,
-    text: '“Buyer buzz partner network disruptive non-disclosure agreement business”',
-    name: 'Albus Dumbledore',
-    role: 'Manager @ Howarts',
+    img: Harry,
+    text: '“Release facebook responsive web design business model canvas seed money monetization.”',
+    name: 'Harry Potter',
+    role: 'Team Leader @ Gryffindor',
   },
   {
     id: uuid(),
@@ -40,9 +40,9 @@ export const EnterpriseCard = [
   },
   {
     id: uuid(),
-    img: Harry,
-    text: '“Release facebook responsive web design business model canvas seed money monetization.”',
-    name: 'Harry Potter',
-    role: 'Team Leader @ Gryffindor',
+    img: Albus,
+    text: '“Buyer buzz partner network disruptive non-disclosure agreement business”',
+    name: 'Albus Dumbledore',
+    role: 'Manager @ Howarts',
   },
 ];

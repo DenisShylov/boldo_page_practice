@@ -1,5 +1,12 @@
-.css-kmnvkl-MuiPaper-root-MuiDialog-paper {
-  max-width: 893px;
-  border-radius: 50px;
-  overflow-y: visible;
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.swiper-backface-hidden .swiper-slide {
+  display: flex;
+  justify-content: center;
 }

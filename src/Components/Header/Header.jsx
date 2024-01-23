@@ -20,22 +20,23 @@ const Header = () => {
   const theme = useTheme();
   const screenSize = useMediaQuery(theme.breakpoints.up('md'));
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const [openPopUp, setOpenPopUp] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpenPopUp = () => setOpenPopUp((prev) => !prev);
+  const handleClosePopUp = () => setOpenPopUp(false);
 
   const handleMenu = () => {
-    setMenu((prev) => !prev);
+    setMobileOpen((prev) => !prev);
   };
 
   const handleNavigate = () => {
     navigate('/about');
   };
+
   useEffect(() => {
     if (screenSize) {
-      setMenu(false);
+      setMobileOpen(false);
     }
   }, [screenSize]);
 
@@ -56,14 +57,19 @@ const Header = () => {
               Boldo
             </LogoText>
           </ToolbarLogo>
-          <BurgerBtn color="inherit" edge="start" onClick={handleMenu}>
+          <BurgerBtn
+            color="inherit"
+            edge="start"
+            aria-label="open drawer"
+            onClick={handleMenu}
+          >
             <MenuIcon />
           </BurgerBtn>
-          {menu && (
+          {mobileOpen && (
             <MobileMenu
-              handleOpen={handleOpen}
-              handleClose={handleMenu}
-              screenSize={screenSize}
+              handleOpenDrawer={mobileOpen}
+              handleCloseDrawer={setMobileOpen}
+              handleOpenPopUp={handleOpenPopUp}
             />
           )}
           <NavContainer>
@@ -79,13 +85,13 @@ const Header = () => {
                 {item}
               </NavItemBtn>
             ))}
-            <LoginBtn variant="contained" onClick={handleOpen}>
+            <LoginBtn variant="contained" onClick={handleOpenPopUp}>
               Log In
             </LoginBtn>
           </NavContainer>
         </Toolbar>
       </CustomAppBar>
-      <PopUp onClose={handleClose} open={open} />
+      <PopUp onClose={handleClosePopUp} open={openPopUp} />
     </Box>
   );
 };

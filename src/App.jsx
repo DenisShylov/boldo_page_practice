@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // Locale Files
 import About from './Pages/About';
