@@ -27,7 +27,6 @@ const OurNumbers = () => {
   return (
     <OurNumberContainer data-aos="fade-up" ref={ref}>
       <TextContainer>
-        <CountUp start={0} end={120} />
         <Typography
           variant="h4"
           sx={{ color: 'text.grey.light', lineHeight: '32px' }}
@@ -44,7 +43,11 @@ const OurNumbers = () => {
             key={item}
             sx={{ alignItems: 'flex-start', width: '200px', mt: '84px' }}
           >
-            <Typography variant="biggest" color="text.green.main">
+            <Typography
+              variant="biggest"
+              sx={{ fontSize: { xs: '86px', sm: '86px', md: '96px' } }}
+              color="text.green.main"
+            >
               {inView ? numberRenderCondition(index) : null}
               {index === 0 ? (
                 <Typography component={'span'} sx={{ fontSize: 'inherit' }}>
